@@ -3,6 +3,17 @@ const mongoose = require('mongoose')
 const router = express.Router()
 const Crud = require('../models/data')
 
+router.get('/', async (req, res) => {
+  try {
+    const element = await Crud.find()
+    console.log('res',element)
+    res.json(element)
+  } catch (error) {
+    console.error(error.message)
+    res.status(500).send('Server Error!')    
+  }
+})
+
 router.post('/data', (req, res) => {
   const { title, author } = req.body
   if (!title || !author) {
@@ -12,7 +23,7 @@ router.post('/data', (req, res) => {
     title, author
   })
   data.save()
-  res.json({ id: data._id })
+  res.json(data)
 })
 
 router.put('/data/:id', async (req, res) => {

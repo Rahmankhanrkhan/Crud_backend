@@ -12,6 +12,7 @@ class CreateScreen extends Component {
     const elements = {
       title, author
     }
+    console.log('CREAT', elements)
     addData(elements);
     navigation.pop()
   }
@@ -32,5 +33,10 @@ const mapStateToProps = state => {
     data: state.data
   }
 }
+const mapDispatchToProps = dispatch => {
+  return {
+    addData: (data) => { dispatch(addData(data)) }
+  }
+}
 
-export default connect(mapStateToProps, { addData })(CreateScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateScreen)

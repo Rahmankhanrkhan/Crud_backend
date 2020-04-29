@@ -1,9 +1,10 @@
 import { add_Data, edit_Data, delete_data, } from "../actions/types";
 
-export const actionReducer = (state = [], action) => {
+export const actionReducer =  (state = [], action) => {
   switch (action.type) {
     case add_Data:
-      const { title, author } = action.payload.elements;
+      console.log('Reducer', action.payload)
+      const { title, author } =  action.payload;
       console.log('ACTION REDUCER', title)
       return [...state, {
         title,

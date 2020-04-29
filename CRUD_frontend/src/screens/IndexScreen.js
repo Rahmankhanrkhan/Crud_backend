@@ -79,5 +79,4 @@ const mapStateToProps = state => {
   }
 }
 
-
 export default connect(mapStateToProps, { deleteData })(IndexScreen)
