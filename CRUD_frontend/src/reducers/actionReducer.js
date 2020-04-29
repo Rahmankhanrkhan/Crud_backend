@@ -4,12 +4,14 @@ export const actionReducer =  (state = [], action) => {
   switch (action.type) {
     case add_Data:
       console.log('Reducer', action.payload)
-      const { title, author } =  action.payload;
-      console.log('ACTION REDUCER', title)
+      const { title, author,_id } =  action.payload;
+      console.log('ACTION REDUCER', _id)
+      const dbId = _id
       return [...state, {
         title,
         author,
-        id: new Date().getTime()
+        dbId,
+        id: dbId
       }];
     case edit_Data:
       console.log('action reducer', action)
@@ -17,7 +19,7 @@ export const actionReducer =  (state = [], action) => {
         ? action.payload.elements : data
       )
     case delete_data:
-      return state.filter(data => data.id !== action.payload.id)
+      return state.filter(data => data.dbId !== action.payload.dbId)
     default:
       return state;
   }

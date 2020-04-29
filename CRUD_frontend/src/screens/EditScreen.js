@@ -7,6 +7,7 @@ import FormField from '../component/FormField'
 const EditScreen = ({ navigation, data, editData }) => {
 
   const id = navigation.getParam('id')
+  console.log('edit id', id)
 
   const onSubmit = (title, author) => {
   const elements = {
@@ -32,4 +33,11 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { editData })(EditScreen)
+const mapDispatchToProps = dispatch => {
+  return {
+    editData: (data) => { dispatch(editData(data)) }
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditScreen)

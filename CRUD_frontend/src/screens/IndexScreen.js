@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { Feather } from '@expo/vector-icons';
 import { connect } from 'react-redux'
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
-import { deleteData } from '../actions/actions';
+import { deleteData, addData } from '../actions/actions';
 
 const IndexScreen = ({ navigation, data, deleteData }) => {
   // console.log('Index propstitile ', props)
@@ -26,7 +26,7 @@ const IndexScreen = ({ navigation, data, deleteData }) => {
                   </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                  onPress={() => deleteData(item.id)} >
+                  onPress={() => deleteData(item.dbId)} >
                   <Feather name='trash-2' style={styles.icon} />
                 </TouchableOpacity>
               </View>
@@ -79,4 +79,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { deleteData })(IndexScreen)
+const mapDispatchToProps = dispatch => {
+  return {
+    deleteData: (id) => { dispatch(deleteData(id)) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(IndexScreen)

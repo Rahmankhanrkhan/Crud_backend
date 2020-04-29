@@ -9,6 +9,8 @@ const DetailScreen = ({ navigation, data }) => {
   const detail = data.find(data => data.id === id)
   const title = detail.title ? detail.title : <Text>No Data</Text>
   const author = detail.author ? detail.author : <Text>No Data</Text>
+  const dbId = detail.dbId ? detail.dbId : null
+  console.log('det db id',dbId)
   return (
     <View>
       <Spacer>
